@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sql_lite_EF9_Maui_sample_2026.Pages.CategoryProductPage"
+             Title="Edit Product">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Edit Product" FontSize="Large" HorizontalOptions="Center" />
+
+            <Label Text="Description" />
+            <Entry Text="{Binding CurrentProduct.Description}" />
+
+            <Label Text="Unit Price" />
+            <Entry Text="{Binding CurrentProduct.UnitPrice}" Keyboard="Numeric" />
+
+            <Label Text="Quantity In Stock" />
+            <Entry Text="{Binding CurrentProduct.QuantityInStock}" Keyboard="Numeric" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Save Changes" Command="{Binding SaveCommand}" />
+                <Button Text="Cancel" Command="{Binding CancelCommand}" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

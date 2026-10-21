@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Week4MAUILabS00310830.AppShell" 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:Week4MAUILabS00310830" 
+    xmlns:sys="clr-namespace:System;assembly=netstandard" 
+    Title="Week_4_MAUI_S00310830_2026" 
+    xmlns:pages="clr-namespace:Sql_lite_EF9_Maui_sample_2026.Pages" 
+    Shell.FlyoutBehavior="Flyout" 
+    FlyoutHeaderBehavior="Default" 
+    FlyoutVerticalScrollMode="Enabled" 
+    FlyoutBackgroundColor="{StaticResource Primary}" 
+    FlyoutWidth="270"
+    >
+    <Shell.Resources>
+        <Style x:Key="MyPageStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="White" />
+            <Setter Property="Shell.TitleColor" Value="WhiteSmoke" />
+        </Style>
+    </Shell.Resources>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid WidthRequest="270" ColumnDefinitions="0.2*,0.8*">
+                <Image Grid.Column="0" Source="goldstar.svg" 
+               Margin="5" 
+               HeightRequest="45" />
+                <Label Grid.Column="1" 
+                       Margin="15" 
+               Text="{Binding Title}" 
+               TextColor="White" 
+               FontAttributes="Italic" 
+               VerticalTextAlignment="Start" />
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <StackLayout>
+                <Label Text="{Binding Source={x:Static sys:DateTime.Now}, 
+                    StringFormat='{0:MMMM dd, yyyy}'} " 
+                    TextColor="GhostWhite" 
+                    HorizontalOptions="Center" 
+                    WidthRequest="270"/>
+            </StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+    <ShellContent 
+        Title="Home Page" 
+        Style="{StaticResource MyPageStyle}" 
+        ContentTemplate="{DataTemplate local:MainPage}"/>
+    <ShellContent 
+        Title="Categories" 
+        Style="{StaticResource MyPageStyle}" 
+        ContentTemplate="{DataTemplate pages:CategoriesListPage}"/>
+</Shell>
+
+

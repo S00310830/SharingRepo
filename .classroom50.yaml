@@ -1,0 +1,12 @@
+schema: "classroom50/repo-config/v1"
+classroom: "rad301-classroom-26-27"
+assignment: "rad301-labs-26-27"
+owner:
+  username: "S00310830"
+  id: 329901758
+  accepted_at: "2026-09-21T08:50:00Z"
+source:
+  owner: "itsrad301"
+  owner_id: 22049748
+  repo: "Rad301Labs2627"
+  branch: "master"

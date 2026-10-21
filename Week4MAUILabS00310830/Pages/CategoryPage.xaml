@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sql_lite_EF9_Maui_sample_2026.Pages.CategoryPage"
+             xmlns:local="clr-namespace:Sql_lite_EF9_Maui_sample_2026.ViewModels"
+             Title="Category Page"
+             xmlns:data="clr-namespace:ProductModel2026;assembly=ProductModel2026"
+             >
+
+    <ContentPage.Resources>
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="TextColor" Value="Black" />
+        </Style>
+
+    </ContentPage.Resources>
+    <VerticalStackLayout          
+        BackgroundColor="White">
+
+        <Label Style="{StaticResource HeaderLabelStyle}"
+            Text="Category Products for"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label Text="{Binding CurrentCategory.Description}"
+               Style="{StaticResource HeaderLabelStyle}"            
+               VerticalOptions="Center" 
+            HorizontalOptions="Center" >
+        </Label>
+        <HorizontalStackLayout 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center">
+            <Label Style="{StaticResource HeaderLabelStyle}"
+                Text="{Binding ProductCount, StringFormat='Number of Products in this Category: {0}'}"
+                VerticalTextAlignment="Start" 
+                HorizontalOptions="Center" 
+                Margin="5">
+            </Label>
+        </HorizontalStackLayout>
+        <Grid Margin="20" RowDefinitions="Auto,Auto,*" ColumnDefinitions="Auto,Auto">
+            <CollectionView ItemsSource="{Binding CategoryProducts}"
+                  SelectionMode="Single"
+                  SelectionChanged="OnCollectionViewSelectionChanged"
+                  Grid.Row="2"
+                  Grid.ColumnSpan="2">
+                <CollectionView.Header>
+                    <Grid Padding="10" ColumnDefinitions="60,*,80,80">
+                        <Label Text="ID" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="1" Text="Description" FontAttributes="Bold" VerticalTextAlignment="Center" />
+                        <Label Grid.Column="2" Text="UnitPrice" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                        <Label Grid.Column="3" Text="Quantity In Stock" FontAttributes="Bold" HorizontalTextAlignment="End" VerticalTextAlignment="Center"/>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="data:Product">
+                        <Grid Padding="8" ColumnDefinitions="60,*,80,80">
+                            <Label Grid.Column="0" Text="{Binding ProductID}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="1" Text="{Binding Description}" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="2" Text="{Binding UnitPrice, StringFormat='{}{0:N2}'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" />
+                            <Label Grid.Column="3" Text="{Binding QuantityInStock}" VerticalTextAlignment="End" HorizontalTextAlignment="End" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
+
